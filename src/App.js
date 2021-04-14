@@ -26,7 +26,7 @@ function App() {
     }
 
     // creating a new order
-    const result = await axios.post("http://localhost:8080/api/v1/payment/session", { amount: 1, receipt: 'receipt_4404'});
+    const result = await axios.post("http://localhost:5000/payment", { amount: 1, receipt: 'receipt_4404'});
 
     if (!result) {
         alert("Server error. Are you online?");
@@ -54,7 +54,7 @@ function App() {
                 razorpaySignature: response.razorpay_signature,
             };
 
-            const result = await axios.post("http://localhost:5000/payment/success", data);
+            const result = await axios.post("http://localhost:5000/success", data);
 
             alert(result.data.msg);
         },
